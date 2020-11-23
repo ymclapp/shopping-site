@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Registration Page</title>
+</head>
+<body>
+    <!-- TO DO:
+        - Account registration form
+        - Do they select what they like for workouts or trainers?
+        - Do they enter body information?
+    -->
+ <header>
+     <h1>This is the REGISTRATION page!</h1>
+ </header> 
+ <form id = "registrationForm" type = "text">
+<fieldset>
+    <legend id = "registrationLegend">Account Registration</legend>
+    
+    <label id = "firstName" for = "fistName"><b>First Name</b></label>
+        <input type="text"  size = "30" maxlength="100" input id="firstName"/>
+<br><br>
+    <label id = "lastName" for = "lastName"><b>Last Name</b></label>
+        <input type="text"  size = "30" maxlength="100" input id="lastName"/>
+<br><br>
+    <label id = "email" for = "email"><b>Email</b></label>
+        <input type="text"  size = "30" maxlength="100" input id="email"/>
+<br><br>
+    <label id = "userName" for = "userName"><b>User Name</b></label>
+         <input type="text"  size = "30" maxlength="100" input id="userName"/>
+<br><br>
+    <label id = "password" for = "password"><b>Password</b></label>
+        <input type="text"  size = "30" maxlength="100" input id="password"/>
+<br><br>
+<button id = "registerBtn">Submit</button>
+   
+</fieldset>
+ </form>
+ 
+ <script src="js/registration.js"></script>
+</body>
+</html>
