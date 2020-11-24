@@ -9,7 +9,7 @@
 
 
 var form = document.getElementById(`registrationForm`);
-form.addEventListener(`submit`, registered);
+form.addEventListener(`submit`, registered, );
 
 
 
@@ -21,35 +21,47 @@ function user(firstName, lastName, email, userName, password) {
     this.password = password;
     };
 
+    // var formData = {
+    //     "firstName" : this.firstName.value,
+    //     "lastName" : this.lastName.value,
+    //     "email" : this.email.value,
+    //     "userName" : this.userName.value,
+    //     "password" : this.password.value
+    // };
+    
     
     
 function registered (e) {
     e.preventDefault();
-    var userFirstNameValue = document.getElementById(`firstName`).value;
-    var userNameFinal = document.getElementById('userName').value;
-    alert(`Thank you, ${userFirstNameValue} for registering!  Your user name is ${userNameFinal}.`);
+    var firstNameValue = document.getElementById(`firstNameInput`);
+    localStorage.setItem('firstNameInput', firstNameValue.value);
+    var lastNameValue = document.getElementById('lastNameInput');
+    localStorage.setItem('lastNameInput', lastNameValue.value);
+    var emailValue = document.getElementById('emailInput');
+    localStorage.setItem('emailInput', emailValue.value);
+    var userNameValue = document.getElementById('userNameInput');
+    localStorage.setItem('userNameInput', userNameValue.value);
+    var passwordValue = document.getElementById('passwordInput');
+    localStorage.setItem('passwordInput', passwordValue.value);
+
+    // localStorage.setItem("formData", JSON.stringify(formData));
+    alert(`Thank you, ${firstNameValue.value} for registering!  Your user name is ${userNameValue.value}.`);
 };
 
-// var firstName = document.getElementById('firstName').value;
-// var lastName = document.getElementById('lastName').value;
-// var email = document.getElementById('email').value;
-// var userName = document.getElementById('userName').value;
-// var password = document.getElementById('password').value;
-// localStorage.setItem('firstName', firstName);
-// localStorage.setItem('lastName', lastName);
-// localStorage.setItem('email', email);
-// localStorage.setItem('userName', userName);
-// localStorage.setItem('password', password);
+// var firstNameValue = document.getElementById('firstNameInput');
+
+// var userNameValue = document.getElementById('userNameInput');
 
 
-var formData = {
-    "firstName" : this.firstName.value,
-    "lastName" : this.lastName.value,
-    "email" : this.email.value,
-    "userName" : this.userName.value,
-    "password" : this.password.value
-};
 
-function saveToStorage() {
-        localStorage.setItem("formData", JSON.stringify(formData));
-      }
+// var formData = {
+//     "firstName" : this.firstName.value,
+//     "lastName" : this.lastName.value,
+//     "email" : this.email.value,
+//     "userName" : this.userName.value,
+//     "password" : this.password.value
+// };
+
+// function saveToStorage() {
+//         localStorage.setItem("formData", JSON.stringify(formData));
+//       }
