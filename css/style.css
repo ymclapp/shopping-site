@@ -1,0 +1,41 @@
+/* html {
+    background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+    background-size: 100% 100%;
+}
+
+body {
+    width: 960px;
+} */
+
+/* mobile layout */
+@media only screen and (min-width: 320px) {
+    html {
+        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background-size: 50% 50%;
+    }
+    /* body {
+        background: orange;
+    } */
+}
+
+/*tablet layout*/
+@media only screen and (min-width: 768px) {
+    html {
+        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background-size: 50% 50%;
+    }
+    /* body {
+        background: dodgerblue;
+    } */
+}
+
+/*laptop layout*/
+@media only screen and (min-width: 960px) {
+    html {
+        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background-size: 50% 50%;
+    }
+    /* body {
+        background: limegreen;
+    } */
+}

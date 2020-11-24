@@ -11,8 +11,6 @@
 var form = document.getElementById(`registrationForm`);
 form.addEventListener(`submit`, registered, );
 
-
-
 function user(firstName, lastName, email, userName, password) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -21,17 +19,8 @@ function user(firstName, lastName, email, userName, password) {
     this.password = password;
     };
 
-    // var formData = {
-    //     "firstName" : this.firstName.value,
-    //     "lastName" : this.lastName.value,
-    //     "email" : this.email.value,
-    //     "userName" : this.userName.value,
-    //     "password" : this.password.value
-    // };
-    
-    
-    
-function registered (e) {
+     
+function registered (e) {//will probably need to separate so that verification can complete before storing
     e.preventDefault();
     var firstNameValue = document.getElementById(`firstNameInput`);
     localStorage.setItem('firstNameInput', firstNameValue.value);
@@ -44,24 +33,6 @@ function registered (e) {
     var passwordValue = document.getElementById('passwordInput');
     localStorage.setItem('passwordInput', passwordValue.value);
 
-    // localStorage.setItem("formData", JSON.stringify(formData));
     alert(`Thank you, ${firstNameValue.value} for registering!  Your user name is ${userNameValue.value}.`);
 };
 
-// var firstNameValue = document.getElementById('firstNameInput');
-
-// var userNameValue = document.getElementById('userNameInput');
-
-
-
-// var formData = {
-//     "firstName" : this.firstName.value,
-//     "lastName" : this.lastName.value,
-//     "email" : this.email.value,
-//     "userName" : this.userName.value,
-//     "password" : this.password.value
-// };
-
-// function saveToStorage() {
-//         localStorage.setItem("formData", JSON.stringify(formData));
-//       }
