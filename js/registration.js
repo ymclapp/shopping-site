@@ -27,9 +27,14 @@ function registered (e) {//will probably need to separate so that verification c
     var lastNameValue = document.getElementById('lastNameInput');
     localStorage.setItem('lastNameInput', lastNameValue.value);
     var emailValue = document.getElementById('emailInput');
+    function validateEmail () {
+        var 
+    }
     localStorage.setItem('emailInput', emailValue.value);
+    // Can I validate that the email entered is valid?
     var userNameValue = document.getElementById('userNameInput');
     localStorage.setItem('userNameInput', userNameValue.value);
+    // Need to validate that this username is not already being used or do I use the email address? Use the email address.
     var passwordValue = document.getElementById('passwordInput');
     localStorage.setItem('passwordInput', passwordValue.value);
 
