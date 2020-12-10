@@ -10,13 +10,16 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
+
+// Our Dependencies
+const client = require('./util/client');
 // Application Setup
 const PORT = process.env.PORT;
 const app = express();
 
 // Databae connection setup
-const client = new pg.Client(process.env.DATABASE_URL);
-client.on('error', err => {throw err; });
+// const client = new pg.Client(process.env.DATABASE_URL);
+// client.on('error', err => {throw err; });
 
 // Middleware - to get APIs to work with other webpages
 app.use(cors());
@@ -30,6 +33,25 @@ app.get('/', (request, response) => {
 app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
+
+app.get('/users', (request, response) => {
+  response.send('This SHOULD be where the books info will show');
+});
+
+// The below does not work yet
+// app.get('/users', (request, response) => {
+//   const SQL = 'SELECT * FROM Users';
+//   client.query(SQL)
+//     .then(results => {
+//       console.log(results);
+
+//       response.send(results.rows);
+//     })
+//     .catch(err => {  //<---always include a .catch with promises or you won't know there is an error; it will just timeout.
+//       console.log(err);
+//       errorHandler(err. request, response);
+//     });
+// })
 
 // Instead of the inline info like above, you can send it to a handler
 // Ex. app.get('/location', locationHandler);  <----goes here in the app.get area
@@ -54,19 +76,6 @@ app.use(notFoundHandler);
 // Has to happen after the error might have occurred.  Any further up and it would proccess before an error has a chance to occur.
 app.use(errorHandler);
 
-app.get('/users', (request, response) => {
-  const SQL = 'SELECT * FROM users';
-  client.query(SQL)
-    .then(results => {
-      console.log(results);
-
-      response.json(results);
-    })
-    .catch(err => {  //<---always include a .catch with promises or you won't know there is an error; it will just timeout.
-      console.log(err);
-      errorHandler(err. request, response);
-    });
-})
 
 
 
