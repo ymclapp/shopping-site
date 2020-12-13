@@ -34,9 +34,9 @@ app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
 
-app.get('/users', (request, response) => {
-  response.send('This SHOULD be where the books info will show');
-});
+// app.get('/users', (request, response) => {
+//   response.send('This SHOULD be where the books info will show');
+// });
 
 // The below does not work yet
 // app.get('/users', (request, response) => {
@@ -68,7 +68,7 @@ app.get('/users', (request, response) => {
     // this.longitude = geoData[0].lon);
 // }
 
-// app.use(express.static('./public'));
+app.use(express.static('./public'));
 
 // Has to happen after everything else
 app.use(notFoundHandler);
