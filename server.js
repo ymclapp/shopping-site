@@ -10,16 +10,20 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
+// Databae connection setup <<----this is also in the client.js document already
+if (!process.env.DATABASE_URL) {
+  throw 'Missing DATABASE_URL';
+};
 
-// Our Dependencies
-const client = require('./util/client');
+const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', err => console.error(err));
+
+// Our Dependencies<<----this is also in the client.js document already
+// const client = require('./util/client');
+
 // Application Setup
 const PORT = process.env.PORT;
 const app = express();
-
-// Databae connection setup
-// const client = new pg.Client(process.env.DATABASE_URL);
-// client.on('error', err => {throw err; });
 
 // Middleware - to get APIs to work with other webpages
 app.use(cors());
