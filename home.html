@@ -10,11 +10,12 @@
 <body>
 
     <!-- TO DO:
-        - Add a slide show of Beachbody programs
+        - Add a slide show of Beachbody programs - done
+        - Slideshow coding for HTML, CSS, and JS - https://www.w3schools.com/howto/howto_js_slideshow.asp
         -->
     <!-- <a href = "home.html">Home</a> -->
     <div>
-        <img src = "https://placehold.it/200x70/add8e6" alt = "Logo">
+        <!-- <img src = "https://placehold.it/200x70/add8e6" alt = "Logo"> -->
         <a href = "shopping.html">Shopping</a>
         <a href = "cart.html">Cart</a>
         <a href = "myOrders.html">My Orders</a>
@@ -24,7 +25,57 @@
      <h1>This is the HOME page!</h1>
  </header>   
  <main>
-    <img src = "https://placehold.it/900x450/ddd" alt = "Hero Image">
+
+    <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <!-- <div class="numbertext">1 / 5</div> -->
+      <img src="/images/0515_Team-Beachbody-Trainers.jpg" style="width:50%">
+      <!-- <div class="text">Beachbody Trainers</div> -->
+    </div>
+  
+    <div class="mySlides fade">
+      <!-- <div class="numbertext">2 / 5</div> -->
+      <img src="/images/9WCF.NEW_.960.EN_-715x358.jpg" style="width:50%">
+      <!-- <div class="text">Success Story</div> -->
+    </div>
+  
+    <div class="mySlides fade">
+      <!-- <div class="numbertext">3 / 5</div> -->
+      <img src="/images/Insanity.jpg" style="width:50%">
+      <!-- <div class="text">Insanity</div> -->
+    </div>
+  
+    <div class="mySlides fade">
+        <!-- <div class="numbertext">4 / 5</div> -->
+        <img src="/images/beachbody-30-minute-programs.jpg" style="width:50%">
+        <!-- <div class="text">30 Minute Workouts</div> -->
+      </div>
+
+    <div class="mySlides fade">
+    <!-- <div class="numbertext">5 / 5</div> -->
+    <img src="/images/Joel.jpg" style="width:50%">
+    <!-- <div class="text">Joel</div> -->
+    </div>
+
+    <!-- Next and previous buttons if the slideshow is manual -->
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div> -->
+  <br>
+  
+  <!-- The dots/circles mostly for a manual slideshow-->
+  <!-- <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+  </div> -->
+
+<div>
      <container id = "description"></container>
         <h2>Time to get ahead on your fitness goals</h2> 
         <p>
@@ -38,7 +89,7 @@
         <img src = "https://placehold.it/300x375/ffffcc" alt = "Sub Banner 2">
         <img src = "https://placehold.it/300x375/ffccff" alt = "Sub Banner 3">
      </section>
-
+    </div>
  </main>
 
  <script src="js/home.js"></script>
