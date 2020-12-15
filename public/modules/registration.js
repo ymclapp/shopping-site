@@ -9,7 +9,7 @@
 
 
 var form = document.getElementById(`registrationForm`);
-form.addEventListener(`submit`, registrationHandler, );
+form.addEventListener(`submit`, registered);
 
 function user(firstName, lastName, email, userName, password) {
     this.firstName = firstName;
@@ -20,7 +20,7 @@ function user(firstName, lastName, email, userName, password) {
     };
 
      
-function registrationHandler (e) {//will probably need to separate so that verification can complete before storing
+function registered (e) {//will probably need to separate so that verification can complete before storing
     e.preventDefault();
     var firstNameValue = document.getElementById(`firstNameInput`);
     localStorage.setItem('firstNameInput', firstNameValue.value);
@@ -41,4 +41,3 @@ function registrationHandler (e) {//will probably need to separate so that verif
     alert(`Thank you, ${firstNameValue.value} for registering!  Your user name is ${userNameValue.value}.`);
 };
 
-module.exports = registrationHandler;

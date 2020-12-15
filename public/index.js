@@ -16,6 +16,6 @@ function showSlides() {
   setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 
-let button = document.getElementById('register').onclick = function() {
-    location.href = "http://127.0.0.1:5500/registration.html";
-};
+// let button = document.getElementById('register').onclick = function() {
+//     location.href = "http://127.0.0.1:5500/registration.html";
+// };
