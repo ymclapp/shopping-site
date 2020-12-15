@@ -1,5 +1,5 @@
 html {
-    background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+    background: url(/public/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
     /* background-size: 100% 100%; */
 }
 
@@ -10,7 +10,7 @@ html {
 /* mobile layout */
 @media only screen and (min-width: 320px) {
     html {
-        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background: url(/public/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
         background-size: 50% 50%;
     }
     /* body {
@@ -21,7 +21,7 @@ html {
 /*tablet layout*/
 @media only screen and (min-width: 768px) {
     html {
-        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background: url(/public/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
         background-size: 50% 50%;
     }
     /* body {
@@ -32,7 +32,7 @@ html {
 /*laptop layout*/
 @media only screen and (min-width: 960px) {
     html {
-        background: url(/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
+        background: url(/public/images/NicePng_forever-21-logo-png_736011.png) no-repeat center center fixed;
         background-size: 50% 50%;
     } */
     /* body {

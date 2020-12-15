@@ -30,9 +30,11 @@ app.use(cors());
 
 
 // Need the below for each page of the site
-app.get('/', (request, response) => {
-  response.send('This would not show if it was going through Heroku, correct?');
-});
+// app.get('/', (request, response) => {
+//   response.send('This would not show if it was going through Heroku, correct?');
+// });
+
+app.use(express.static('./public'));
 
 app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
@@ -72,7 +74,7 @@ app.get('/bad', (request, response) => {
     // this.longitude = geoData[0].lon);
 // }
 
-app.use(express.static('./public'));
+
 
 // Has to happen after everything else
 app.use(notFoundHandler);
