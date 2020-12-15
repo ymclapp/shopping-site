@@ -31,7 +31,7 @@ app.use(cors());
 
 // Need the below for each page of the site
 app.get('/', (request, response) => {
-  response.send('Home Page!');
+  response.send('This would not show if it was going through Heroku, correct?');
 });
 
 app.get('/bad', (request, response) => {
