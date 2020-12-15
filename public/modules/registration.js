@@ -9,7 +9,7 @@
 
 
 var form = document.getElementById(`registrationForm`);
-form.addEventListener(`submit`, registered, );
+form.addEventListener(`submit`, registrationHandler, );
 
 function user(firstName, lastName, email, userName, password) {
     this.firstName = firstName;
@@ -20,16 +20,16 @@ function user(firstName, lastName, email, userName, password) {
     };
 
      
-function registered (e) {//will probably need to separate so that verification can complete before storing
+function registrationHandler (e) {//will probably need to separate so that verification can complete before storing
     e.preventDefault();
     var firstNameValue = document.getElementById(`firstNameInput`);
     localStorage.setItem('firstNameInput', firstNameValue.value);
     var lastNameValue = document.getElementById('lastNameInput');
     localStorage.setItem('lastNameInput', lastNameValue.value);
     var emailValue = document.getElementById('emailInput');
-    function validateEmail () {
-        var 
-    }
+    // function validateEmail () {
+    //     var 
+    // }
     localStorage.setItem('emailInput', emailValue.value);
     // Can I validate that the email entered is valid?
     var userNameValue = document.getElementById('userNameInput');
@@ -41,3 +41,4 @@ function registered (e) {//will probably need to separate so that verification c
     alert(`Thank you, ${firstNameValue.value} for registering!  Your user name is ${userNameValue.value}.`);
 };
 
+module.exports = registrationHandler;

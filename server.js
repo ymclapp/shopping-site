@@ -10,6 +10,8 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
+
+
 // Databae connection setup <<----this is also in the client.js document already
 if (!process.env.DATABASE_URL) {
   throw 'Missing DATABASE_URL';
@@ -24,9 +26,11 @@ client.on('error', err => console.error(err));
 // Application Setup
 const PORT = process.env.PORT;
 const app = express();
+// const registration = require('./modules/registration');
 
 // Middleware - to get APIs to work with other webpages
 app.use(cors());
+
 
 
 // Need the below for each page of the site
@@ -35,10 +39,14 @@ app.use(cors());
 // });
 
 app.use(express.static('./public'));
+app.use(express.static(__dirname));
+
+// app.get('/registration', function (req, res) { res.redirect('./registration.html') });
 
 app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
+
 
 // app.get('/users', (request, response) => {
 //   response.send('This SHOULD be where the books info will show');
@@ -73,8 +81,6 @@ app.get('/bad', (request, response) => {
     // this.latitude = geoData[0].lat;
     // this.longitude = geoData[0].lon);
 // }
-
-
 
 // Has to happen after everything else
 app.use(notFoundHandler);
