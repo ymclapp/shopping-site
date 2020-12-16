@@ -18,7 +18,8 @@ if (!process.env.DATABASE_URL) {
 };
 
 const client = new pg.Client(process.env.DATABASE_URL);
-client.on('error', err => console.error(err));
+// client.on('error', err => console.error(err));
+client.on('error', err => { throw err; });
 
 // Our Dependencies<<----this is also in the client.js document already
 // const client = require('./util/client');
@@ -47,25 +48,46 @@ app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
 
+app.get('/workouts', (request, response) => {  //<<--this works
+  const SQL = 'SELECT * FROM Workouts';
+  client.query(SQL)
+  .then(results => {
+    console.log(results);
+    let { rowCount, rows } = results; //<<--this will assign variables out of results as if you did let rows = results.rows and let rowCount = results.rowCount
+    
+    if (rowCount === 0) {
+      response.send ({
+        error: true,
+        message: 'Try harder'
+      });
+    } else {
+      response.send({
+        error: false,
+        results: rows,
+      })
+        
+      }
+  })
+  .catch(err => {  
+      console.log(err);
+      errorHandler(err. request, response);
+  });
+})
 
-// app.get('/users', (request, response) => {
-//   response.send('This SHOULD be where the books info will show');
-// });
-
-// The below does not work yet
 // app.get('/users', (request, response) => {
 //   const SQL = 'SELECT * FROM Users';
 //   client.query(SQL)
-//     .then(results => {
-//       console.log(results);
+//   .then(results => {
+//     console.log(results);
 
-//       response.send(results.rows);
-//     })
-//     .catch(err => {  //<---always include a .catch with promises or you won't know there is an error; it will just timeout.
+//     response.send(results);
+//   })
+//   .catch(err => {  
 //       console.log(err);
 //       errorHandler(err. request, response);
-//     });
+//   });
 // })
+
 
 // Instead of the inline info like above, you can send it to a handler
 // Ex. app.get('/location', locationHandler);  <----goes here in the app.get area
@@ -89,9 +111,7 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 
-
-
-//Make sure the server is listening for requests
+//Make sure the server is listening for requests - after the error handlers (above) and above the functions (below)
 client.connect()  //<----need to use this with the const client et al above
   .then (() => {
     console.log('PG Connected!');
