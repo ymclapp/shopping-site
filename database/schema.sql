@@ -1,5 +1,3 @@
--- DROP TABLE IF EXISTS Workouts;
-
 CREATE TABLE Workouts (
   Id SERIAL PRIMARY KEY,
   Program VARCHAR(255) NOT NULL,
@@ -7,4 +5,13 @@ CREATE TABLE Workouts (
   Trainer VARCHAR(255) NOT NULL,
   WorkoutType VARCHAR(255) NOT NULL,
   NumberOfWorkouts VARCHAR(255)
-)
+);
+
+CREATE TABLE Users (
+  Id SERIAL PRIMARY KEY,
+  UserName VARCHAR(255) NOT NULL,
+  FirstName VARCHAR(255) NOT NULL,
+  LastName VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  Pword VARCHAR(255)
+);
