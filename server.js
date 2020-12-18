@@ -10,16 +10,16 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
+const client = require('./util/db');
 
+// // Databae connection setup <<----this is also in the client.js document already
+// if (!process.env.DATABASE_URL) {
+//   throw 'Missing DATABASE_URL';
+// };
 
-// Databae connection setup <<----this is also in the client.js document already
-if (!process.env.DATABASE_URL) {
-  throw 'Missing DATABASE_URL';
-};
-
-const client = new pg.Client(process.env.DATABASE_URL);
-// client.on('error', err => console.error(err));
-client.on('error', err => { throw err; });
+// const client = new pg.Client(process.env.DATABASE_URL);
+// // client.on('error', err => console.error(err));
+// client.on('error', err => { throw err; });
 
 // Our Dependencies<<----this is also in the client.js document already
 // const client = require('./util/client');
@@ -48,57 +48,24 @@ app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
 
-app.get('/workouts', (request, response) => {  //<<--this works
-  const SQL = 'SELECT * FROM Workouts';
-  client.query(SQL)
-  .then(results => {
-    console.log(results);
-    let { rowCount, rows } = results; //<<--this will assign variables out of results as if you did let rows = results.rows and let rowCount = results.rowCount
-    
-    if (rowCount === 0) {
-      response.send ({
-        error: true,
-        message: 'Try harder'
-      });
-    } else {
-      response.send({
-        error: false,
-        results: rows,
-      })
-        
-      }
-  })
-  .catch(err => {  
-      console.log(err);
-      errorHandler(err. request, response);
-  });
-})
+const registrationModule = require('./public/modules/registration');
+// console.log('registrationModule', registrationModule);
+const {registered, user} = registrationModule;
 
-app.get('/users', (request, response) => {  //<<--this DOES NOT work
-  const SQL = 'SELECT * FROM Users';
-  client.query(SQL)
-  .then(results => {
-    console.log(results);
-    let { rowCount, rows } = results; //<<--this will assign variables out of results as if you did let rows = results.rows and let rowCount = results.rowCount
-    
-    if (rowCount === 0) {
-      response.send ({
-        error: true,
-        message: 'You are unknown'
-      });
-    } else {
-      response.send({
-        error: false,
-        results: rows,
-      })
-        
-      }
-  })
-  .catch(err => {  
-      console.log(err);
-      errorHandler(err. request, response);
-  });
-})
+app.get('/registration', registrationHandler); 
+
+
+
+const workouts = require('./public/modules/workouts');
+// console.log('workoutsHandler', workoutsHandler);
+app.get('/workouts', workoutsHandler);
+
+
+const users = require('./public/modules/users');
+// console.log('usersHandler', usersHandler);
+app.get('/users', usersHandler);
+
+
 
 
 // Instead of the inline info like above, you can send it to a handler
