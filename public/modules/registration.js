@@ -7,11 +7,12 @@
     // - Validate that userName is not already being used
     // - Validate that email address is not already registered
 
-function registrationHandler() {
-    var form = document.getElementById(`registrationForm`);
-    form.addEventListener(`submit`, registered);
+// function registrationHandler() {
+    
 
     function user(firstName, lastName, email, userName, password) {
+        var form = document.getElementById(`registrationForm`);
+        form.addEventListener(`submit`, registered);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -39,7 +40,7 @@ function registrationHandler() {
         localStorage.setItem('passwordInput', passwordValue.value);
 
         alert(`Thank you, ${firstNameValue.value} for registering!  Your user name is ${userNameValue.value}.`);
-    }
+    // }
     };
 
 module.exports = {

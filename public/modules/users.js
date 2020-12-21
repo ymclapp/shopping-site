@@ -28,4 +28,4 @@ const usersHandler = (request, response) => {  //<<--this DOES NOT work
     });
   };
 
-module.exports(usersHandler);
+module.exports = usersHandler;

@@ -28,4 +28,4 @@ const workoutsHandler = (request, response) => {  //<<--this works
     });
 };
 
-  module.exports(workoutsHandler);
+  module.exports = workoutsHandler;

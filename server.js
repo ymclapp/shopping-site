@@ -52,16 +52,15 @@ const registrationModule = require('./public/modules/registration');
 // console.log('registrationModule', registrationModule);
 const {registered, user} = registrationModule;
 
-app.get('/registration', registrationHandler); 
 
 
 
-const workouts = require('./public/modules/workouts');
+const workoutsHandler = require('./public/modules/workouts');
 // console.log('workoutsHandler', workoutsHandler);
 app.get('/workouts', workoutsHandler);
 
 
-const users = require('./public/modules/users');
+const usersHandler = require('./public/modules/users');
 // console.log('usersHandler', usersHandler);
 app.get('/users', usersHandler);
 
