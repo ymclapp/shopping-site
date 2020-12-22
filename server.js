@@ -12,59 +12,33 @@ const pg = require('pg');
 
 const client = require('./util/db');
 
-// // Databae connection setup <<----this is also in the client.js document already
-// if (!process.env.DATABASE_URL) {
-//   throw 'Missing DATABASE_URL';
-// };
-
-// const client = new pg.Client(process.env.DATABASE_URL);
-// // client.on('error', err => console.error(err));
-// client.on('error', err => { throw err; });
-
-// Our Dependencies<<----this is also in the client.js document already
-// const client = require('./util/client');
-
 // Application Setup
 const PORT = process.env.PORT;
 const app = express();
-// const registration = require('./modules/registration');
+
 
 // Middleware - to get APIs to work with other webpages
 app.use(cors());
 
-
-
-// Need the below for each page of the site
-// app.get('/', (request, response) => {
-//   response.send('This would not show if it was going through Heroku, correct?');
-// });
-
 app.use(express.static('./public'));
 app.use(express.static(__dirname));
-
-// app.get('/registration', function (req, res) { res.redirect('./registration.html') });
 
 app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
 
-const registrationModule = require('./public/modules/registration');
-// console.log('registrationModule', registrationModule);
+const registrationModule = require('./public/modules/registration'); //<<--works
 const {registered, user} = registrationModule;
 
-
-
-
-const workoutsHandler = require('./public/modules/workouts');
-// console.log('workoutsHandler', workoutsHandler);
+const workoutsHandler = require('./public/modules/workouts'); //<<--works
 app.get('/workouts', workoutsHandler);
 
 
-const usersHandler = require('./public/modules/users');
-// console.log('usersHandler', usersHandler);
+const usersHandler = require('./public/modules/users'); //<<--doesn't work
 app.get('/users', usersHandler);
 
-
+const errorModule = require('./public/modules/errors'); //<<--works
+const {errorHandler, notFoundHandler} = errorModule;
 
 
 // Instead of the inline info like above, you can send it to a handler
@@ -98,18 +72,3 @@ client.connect()  //<----need to use this with the const client et al above
   .catch(err => {
     throw `PG error!: ${err.message}`;
   });
-
-  // Helper functions/routes
-    // add error handler
-    function errorHandler (error, request, response, next) {
-      response.status(500).json({
-        error: true,
-        message: error.message,
-      });
-    }
-
-    function notFoundHandler (request, response) {
-      response.status(404).json({
-        notFound: true,
-      });
-    }
