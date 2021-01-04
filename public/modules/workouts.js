@@ -1,6 +1,12 @@
 'use strict'
 
 const client = require('../../util/db');
+const errorModule = require('./errors');
+
+if (!process.env.DATABASE_URL) {
+  throw 'Missing DATBASE_URL';
+}
+
 
 const workoutsHandler = (request, response) => {  //<<--this works
     const SQL = 'SELECT * FROM Workouts';

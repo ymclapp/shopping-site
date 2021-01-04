@@ -1,5 +1,6 @@
 `use strict`
 
+const client = require('../../util/db');
 // TO DO:
     // - Capture data entered
     // - Use first name in alert to thank them for registering - done
@@ -8,7 +9,12 @@
     // - Validate that email address is not already registered
 
 // function registrationHandler() {
+
+    const errorModule = require('./errors');
     
+    function showRegistrationForm(request, response) {
+        response.render('pages/registration');        
+    }
 
     function user(firstName, lastName, email, userName, password) {
         var form = document.getElementById(`registrationForm`);
@@ -43,7 +49,28 @@
     // }
     };
 
+    function addUser (request, response) {
+        console.log('POST /registration', request.body);
+        const { firstName, lastName, email, userName, password } = request.body;
+        response.send({firstName})  //Keith's demo showed title - why?  It is not the primary key or required
+        const SQL = 
+        'INSERT INTO users (firstName, lastName, email, userName, password) VALUES ($1, $2, $3, $4, $5) RETURNING Id';
+
+        const values = [firstName, lastName, email, userName, password];
+        client.query(SQL, values)
+            .then(() => {
+                // let id = results.rows[0].id;
+                    response.redirect('/myAccount');
+            })
+            .catch(err => {
+                errorHandler(err, response);
+            });
+    };
+
+
 module.exports = {
     registered,
     user,
+    addUser,
+    showRegistrationForm,
 };

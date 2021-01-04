@@ -6,36 +6,45 @@ require('dotenv').config();
 
 // Application Dependencies
 const express = require('express');
+// const methodOverride = require('method-override');
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
+//Our dependencies  <<-- put all of the const in here for our modules
 const client = require('./util/db');
+
+
+
 
 // Application Setup
 const PORT = process.env.PORT;
 const app = express();
-
-
-// Middleware - to get APIs to work with other webpages
 app.use(cors());
+
 
 app.use(express.static('./public'));
 app.use(express.static(__dirname));
 
+
+app.set('view engine', 'ejs');
+
+//Route Definitions <<--put all of our app.gets in here for our handlers and modules.  Also the app.use for the error handlers
 app.get('/bad', (request, response) => {
   throw new Error ('Ooops');
 });
 
 const registrationModule = require('./public/modules/registration'); //<<--works
-const {registered, user} = registrationModule;
+const {registered, user, showRegistrationForm, addUser} = registrationModule;
+app.get('/registration', showRegistrationForm)
+app.post('/registration', addUser);
 
 const workoutsHandler = require('./public/modules/workouts'); //<<--works
 app.get('/workouts', workoutsHandler);
 
 
-const usersHandler = require('./public/modules/users'); //<<--doesn't work
-app.get('/users', usersHandler);
+// const usersHandler = require('./public/modules/users'); //<<--doesn't work
+// app.get('/users', usersHandler);
 
 const errorModule = require('./public/modules/errors'); //<<--works
 const {errorHandler, notFoundHandler} = errorModule;

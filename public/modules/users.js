@@ -1,31 +1,36 @@
-'use strict'
+// 'use strict'
 
-const client = require('../../util/db');
+// const client = require('../../util/db');
+// const errorModule = require('./errors');
 
-const usersHandler = (request, response) => {  //<<--this DOES NOT work
-    const SQL = 'SELECT * FROM Users';
-    client.query(SQL)
-    .then(results => {
-      console.log(results);
-      let { rowCount, rows } = results; //<<--this will assign variables out of results as if you did let rows = results.rows and let rowCount = results.rowCount
+// if (!process.env.DATABASE_URL) {
+//   throw 'Missing DATBASE_URL';
+// }
+
+// const usersHandler = (request, response) => {  //<<--this DOES NOT work
+//     const SQL = 'SELECT * FROM Users';
+//     client.query(SQL)
+//     .then(results => {
+//       console.log(results);
+//       let { rowCount, rows } = results; //<<--this will assign variables out of results as if you did let rows = results.rows and let rowCount = results.rowCount
       
-      if (rowCount === 0) {
-        response.send ({
-          error: true,
-          message: 'You are unknown'
-        });
-      } else {
-        response.send({
-          error: false,
-          results: rows,
-        })
+//       if (rowCount === 0) {
+//         response.send ({
+//           error: true,
+//           message: 'You are unknown'
+//         });
+//       } else {
+//         response.send({
+//           error: false,
+//           results: rows,
+//         })
           
-        }
-    })
-    .catch(err => {  
-        console.log(err);
-        errorHandler(err. request, response);
-    });
-  };
+//         }
+//     })
+//     .catch(err => {  
+//         console.log(err);
+//         errorHandler(err. request, response);
+//     });
+//   };
 
-module.exports = usersHandler;
+// module.exports = usersHandler;
